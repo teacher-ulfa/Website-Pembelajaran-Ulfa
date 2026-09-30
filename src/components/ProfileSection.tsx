@@ -25,9 +25,7 @@ interface ProfileSectionProps {
 
 export const ProfileSection: React.FC<ProfileSectionProps> = ({ profile }) => {
   const [activeTab, setActiveTab] = useState<'pendekatan' | 'visi-misi' | 'filosofi' | 'kompetensi'>('pendekatan');
-  
-  // Custom image state to allow teacher to preview their own picture locally right away!
-  const [customAvatar, setCustomAvatar] = useState<string | null>(null);
+  const [avatarLoadError, setAvatarLoadError] = useState(false);
   const [copiedPhone, setCopiedPhone] = useState(false);
 
   const handleCopyPhone = (e: React.MouseEvent) => {
@@ -39,16 +37,7 @@ export const ProfileSection: React.FC<ProfileSectionProps> = ({ profile }) => {
     setTimeout(() => setCopiedPhone(false), 2000);
   };
 
-  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setCustomAvatar(reader.result as string);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
+  const photoSource = profile.photoUrl;
 
   return (
     <section id="profil" className="py-16 sm:py-24 bg-slate-50 border-b border-slate-200">
@@ -82,15 +71,16 @@ export const ProfileSection: React.FC<ProfileSectionProps> = ({ profile }) => {
                 
                 {/* Fallback & Real Photo Container */}
                 <div className="w-full h-full rounded-xl overflow-hidden bg-slate-100 flex items-center justify-center relative">
-                  {customAvatar ? (
+                  {photoSource && !avatarLoadError ? (
                     <img
-                      src={customAvatar}
+                      src={photoSource}
                       alt={profile.name}
                       referrerPolicy="no-referrer"
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover object-top"
+                      onError={() => setAvatarLoadError(true)}
                     />
                   ) : (
-                    /* PLACEHOLDER: Tampilan foto profil default berkarakter Islami & edukatif */
+                    /* PLACEHOLDER: Tampilan foto profil default jika foto belum termuat */
                     <div className="w-full h-full bg-gradient-to-b from-emerald-100 via-teal-50 to-emerald-200 flex flex-col items-center justify-center text-emerald-900 p-3">
                       <UserCheck className="w-14 h-14 text-emerald-700" />
                       <span className="text-[10px] font-semibold text-emerald-800 mt-1 uppercase tracking-wider">
@@ -100,23 +90,10 @@ export const ProfileSection: React.FC<ProfileSectionProps> = ({ profile }) => {
                   )}
 
                   {/* Subtle verified badge */}
-                  <div className="absolute bottom-1 right-1 bg-emerald-600 text-white p-1 rounded-full shadow-sm" title="Pendidik Tersertifikasi">
+                  <div className="absolute bottom-1 right-1 bg-emerald-600 text-white p-1 rounded-full shadow-sm ring-2 ring-white" title="Pendidik Tersertifikasi">
                     <FileBadge className="w-3.5 h-3.5" />
                   </div>
                 </div>
-              </div>
-
-              {/* Tombol Coba Ganti Foto Langsung di Browser */}
-              <div className="pt-1">
-                <label className="cursor-pointer text-[11px] font-medium text-emerald-700 hover:text-emerald-800 hover:underline inline-flex items-center gap-1">
-                  <span>+ Uji Coba Ganti Foto Profil</span>
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={handleImageUpload}
-                    className="hidden"
-                  />
-                </label>
               </div>
 
               {/* Nama & Gelar Pendidik */}

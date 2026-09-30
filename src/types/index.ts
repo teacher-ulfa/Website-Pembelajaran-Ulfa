@@ -92,6 +92,7 @@ export interface TeacherProfile {
   schoolName: string;
   schoolAddress: string;
   schoolLogoUrl: string;
+  photoUrl?: string;
   pedagogyApproachTagline: string;
   pedagogyPillars: PedagogyPillar[];
   bio: string;

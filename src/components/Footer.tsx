@@ -1,11 +1,11 @@
 import React from 'react';
-import { BookOpen, Heart, Mail, HelpCircle, Code2, MessageCircle } from 'lucide-react';
+import { BookOpen, Heart, Mail, ExternalLink, MessageCircle, FileText } from 'lucide-react';
 import { TeacherProfile } from '../types';
 
 interface FooterProps {
   profile: TeacherProfile;
-  onOpenGuide: () => void;
-  onOpenExportModal: () => void;
+  onOpenGuide?: () => void;
+  onOpenExportModal?: () => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({
@@ -43,6 +43,22 @@ export const Footer: React.FC<FooterProps> = ({
               Portal administrasi pembelajaran Pendidikan Agama Islam dan Budi Pekerti Kurikulum Merdeka diampu oleh <strong>{profile.name}</strong> ({profile.pangkatGolongan}). 
               Menerapkan <strong>Pendekatan Pembelajaran Mendalam (PM)</strong> terintegrasi <strong>Moderasi Beragama (MB)</strong> dan <strong>Kurikulum Berbasis Cinta (KBC)</strong>.
             </p>
+            {profile.photoUrl && (
+              <div className="flex items-center gap-2.5 pt-1">
+                <div className="w-9 h-9 rounded-full overflow-hidden border border-emerald-500/60 shrink-0 shadow-xs">
+                  <img
+                    src={profile.photoUrl}
+                    alt={profile.name}
+                    referrerPolicy="no-referrer"
+                    className="w-full h-full object-cover object-top"
+                  />
+                </div>
+                <div className="text-[11px] leading-tight">
+                  <span className="font-semibold text-slate-200 block">{profile.name}</span>
+                  <span className="text-emerald-400 text-[10px]">Guru PAI SMAN 1 Krembung</span>
+                </div>
+              </div>
+            )}
             <div className="text-slate-400 text-[11px] pt-1">
               <span className="font-semibold text-slate-300">{profile.schoolName}</span>
               <span className="block text-slate-500">{profile.schoolAddress}</span>
@@ -73,26 +89,28 @@ export const Footer: React.FC<FooterProps> = ({
             </ul>
           </div>
 
-          {/* Quick Tools for Teacher (3 cols) */}
+          {/* Quick Tools & Academic Portal (3 cols) */}
           <div className="md:col-span-3 space-y-3">
             <span className="text-xs font-semibold uppercase tracking-wider text-slate-200 block">
-              Bantuan Guru
+              Portal Akademik
             </span>
             <div className="space-y-2">
-              <button
-                onClick={onOpenGuide}
+              <a
+                href="#perangkat"
                 className="w-full text-left inline-flex items-center gap-2 p-2 rounded-lg bg-slate-800 hover:bg-slate-750 text-slate-300 hover:text-white transition-colors"
               >
-                <HelpCircle className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span>Panduan Ganti Tautan &amp; Foto</span>
-              </button>
-              <button
-                onClick={onOpenExportModal}
+                <FileText className="w-4 h-4 text-emerald-400 shrink-0" />
+                <span>Direktori Modul &amp; LKPD</span>
+              </a>
+              <a
+                href="https://drive.google.com/drive/folders/1gx1f_encJGxHOU6cS4Fc7_E7cDGmBuWy?usp=drive_link"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-full text-left inline-flex items-center gap-2 p-2 rounded-lg bg-slate-800 hover:bg-slate-750 text-slate-300 hover:text-white transition-colors"
               >
-                <Code2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span>Salin File HTML Mandiri</span>
-              </button>
+                <ExternalLink className="w-4 h-4 text-emerald-400 shrink-0" />
+                <span>Google Drive Cloud PAI</span>
+              </a>
             </div>
             <div className="pt-2 text-[11px] text-slate-400 space-y-1">
               <span className="block font-semibold text-slate-300">Kontak Pendidik:</span>

@@ -14,6 +14,8 @@ export const teacherProfileData: TeacherProfile = {
   schoolAddress: 'Jl. Raya Kecamatan No. 2 Krembung - Sidoarjo - Jawa Timur',
   /* LOGO RESMI SMANIKRE (SMA NEGERI 1 KREMBUNG) */
   schoolLogoUrl: 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhjhEe7DsQaweQWtckuBY0QdRPB_J0RbHqfSXb0fFnNGOQYwfzbn9SyTV1WORteNpd7S3rcGj3FYpaCf0X7tjQpcXoDfErD-aWPD9kTf-6auJIoAZ3ETmXpvuoVydS7H87HO-vidqv4ECyayUG4dFJNZNMuVWD2lUyaMaF7ox5BYCfAksicgx7ryvy6V56Z/s1600/LOGO%20SMANIKRE%20(1).png',
+  /* FOTO RESMI PENDIDIK IBU ULFATUL HUSNA */
+  photoUrl: 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhsLCOg4qZSUwGV5tS7hWfHuOXhO3lPOjvcoK-liVXfydR7d6gdihB1O5bA2N1iOu_0wy8Qk0sroPNA19SW2MSC9RkV9khmihcU0EEU_mawyZkhvT_7m9iE3GC4fjOGsiILwwDyY1-sSf-7YPdn7vwnkWuB9lUjHFxIWB2smSsibHZThKz6CHP5qyvMD66J/s1600/ulfa_MAS.jpeg',
   pedagogyApproachTagline: 'Pendekatan Pembelajaran Mendalam (PM) terintegrasi Moderasi Beragama (MB) dan Kurikulum Berbasis Cinta (KBC)',
   pedagogyPillars: [
     {

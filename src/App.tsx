@@ -13,8 +13,6 @@ import { GameEdukasi } from './components/GameEdukasi';
 import { Footer } from './components/Footer';
 import { DocumentPreviewModal } from './components/DocumentPreviewModal';
 import { GalleryLightboxModal } from './components/GalleryLightboxModal';
-import { CustomizationGuideModal } from './components/CustomizationGuideModal';
-import { ExportHtmlModal } from './components/ExportHtmlModal';
 
 import { 
   teacherProfileData, 
@@ -30,8 +28,6 @@ export default function App() {
   // Modal States
   const [selectedDocument, setSelectedDocument] = useState<DocumentItem | null>(null);
   const [selectedGalleryItem, setSelectedGalleryItem] = useState<GalleryItem | null>(null);
-  const [isGuideOpen, setIsGuideOpen] = useState(false);
-  const [isExportModalOpen, setIsExportModalOpen] = useState(false);
 
   // Active section observer on scroll
   useEffect(() => {
@@ -59,11 +55,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-slate-50 text-slate-800 flex flex-col">
       {/* 1. TOP BAR NAVBAR */}
-      <Navbar
-        activeSection={activeSection}
-        onOpenGuide={() => setIsGuideOpen(true)}
-        onOpenExportModal={() => setIsExportModalOpen(true)}
-      />
+      <Navbar activeSection={activeSection} />
 
       {/* MAIN CONTENT RUNNING ON SINGLE PAGE APPLICATION */}
       <main className="flex-1">
@@ -106,11 +98,7 @@ export default function App() {
       </main>
 
       {/* 7. QUIET FOOTER */}
-      <Footer
-        profile={teacherProfileData}
-        onOpenGuide={() => setIsGuideOpen(true)}
-        onOpenExportModal={() => setIsExportModalOpen(true)}
-      />
+      <Footer profile={teacherProfileData} />
 
       {/* MODALS */}
       <DocumentPreviewModal
@@ -121,16 +109,6 @@ export default function App() {
       <GalleryLightboxModal
         item={selectedGalleryItem}
         onClose={() => setSelectedGalleryItem(null)}
-      />
-
-      <CustomizationGuideModal
-        isOpen={isGuideOpen}
-        onClose={() => setIsGuideOpen(false)}
-      />
-
-      <ExportHtmlModal
-        isOpen={isExportModalOpen}
-        onClose={() => setIsExportModalOpen(false)}
       />
     </div>
   );

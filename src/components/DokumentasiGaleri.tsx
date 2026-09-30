@@ -179,18 +179,6 @@ export const DokumentasiGaleri: React.FC<DokumentasiGaleriProps> = ({
           ))}
         </div>
 
-        {/* Code Comment Box for Teacher */}
-        <div className="p-4 bg-white rounded-xl border border-slate-200 text-xs text-slate-600 flex items-center justify-between flex-wrap gap-3">
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-emerald-600" />
-            <span>
-              <strong>Placeholder Dokumentasi:</strong> Untuk mengganti foto kelas atau video asli, edit daftar pada{' '}
-              <code className="px-1.5 py-0.5 bg-slate-100 rounded text-slate-800 font-mono">src/data/mockData.ts</code> di variabel <code className="px-1.5 py-0.5 bg-slate-100 rounded text-slate-800 font-mono">galleryItemsData</code>.
-            </span>
-          </div>
-          <span className="text-slate-500 font-mono text-[11px]">Mendukung JPG, PNG, WebP, &amp; YouTube Embed</span>
-        </div>
-
       </div>
     </section>
   );

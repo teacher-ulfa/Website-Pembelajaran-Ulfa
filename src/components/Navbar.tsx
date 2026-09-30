@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
-import { BookOpen, Menu, X, HelpCircle, Code2, Download, MessageCircle } from 'lucide-react';
+import { Menu, X, Download, MessageCircle } from 'lucide-react';
 
 interface NavbarProps {
   activeSection: string;
-  onOpenGuide: () => void;
-  onOpenExportModal: () => void;
+  onOpenGuide?: () => void;
+  onOpenExportModal?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
-  activeSection,
-  onOpenGuide,
-  onOpenExportModal
+  activeSection
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -75,23 +73,6 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* Zone 3: 1-2 Primary Actions */}
           <div className="hidden sm:flex items-center gap-2.5">
-            <button
-              onClick={onOpenExportModal}
-              title="Unduh template single-file HTML untuk kemudahan pengujian offline / cPanel"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors whitespace-nowrap"
-            >
-              <Code2 className="w-3.5 h-3.5 text-slate-500" />
-              <span>Kode HTML</span>
-            </button>
-
-            <button
-              onClick={onOpenGuide}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 rounded-lg transition-colors whitespace-nowrap"
-            >
-              <HelpCircle className="w-3.5 h-3.5 text-emerald-700" />
-              <span>Panduan Ganti Data</span>
-            </button>
-
             <a
               href="https://wa.me/6282232754232?text=Assalamu%27alaikum%20Ibu%20Ulfatul%20Husna%2C%20S.Ag.%2C%20M.Pd."
               target="_blank"
@@ -114,13 +95,6 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* Mobile Menu Button */}
           <div className="flex md:hidden items-center gap-2">
-            <button
-              onClick={onOpenGuide}
-              aria-label="Buka Panduan"
-              className="p-1.5 text-slate-600 hover:text-slate-900 rounded-md"
-            >
-              <HelpCircle className="w-5 h-5 text-emerald-700" />
-            </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="p-2 text-slate-600 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 rounded-lg"
@@ -153,26 +127,6 @@ export const Navbar: React.FC<NavbarProps> = ({
             ))}
           </div>
           <div className="pt-3 border-t border-slate-100 flex flex-col gap-2">
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onOpenExportModal();
-              }}
-              className="w-full flex items-center justify-center gap-2 px-3 py-2 text-xs font-medium text-slate-700 bg-slate-100 rounded-lg"
-            >
-              <Code2 className="w-4 h-4" />
-              <span>Ekspor Kode HTML Mandiri</span>
-            </button>
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onOpenGuide();
-              }}
-              className="w-full flex items-center justify-center gap-2 px-3 py-2 text-xs font-medium text-emerald-800 bg-emerald-50 border border-emerald-200 rounded-lg"
-            >
-              <HelpCircle className="w-4 h-4 text-emerald-700" />
-              <span>Panduan Ganti Tautan & Data Asli</span>
-            </button>
             <a
               href="https://wa.me/6282232754232?text=Assalamu%27alaikum%20Ibu%20Ulfatul%20Husna%2C%20S.Ag.%2C%20M.Pd."
               target="_blank"

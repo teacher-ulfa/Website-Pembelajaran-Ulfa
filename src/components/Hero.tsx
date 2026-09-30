@@ -221,7 +221,17 @@ export const Hero: React.FC<HeroProps> = ({
 
             {/* Right: Institutional Credentials & Address */}
             <div className="flex flex-col items-center md:items-end text-xs text-slate-300 space-y-1 text-center md:text-right border-t md:border-t-0 border-emerald-900/60 pt-3 md:pt-0 w-full md:w-auto">
-              <div className="flex items-center gap-1.5 text-slate-200">
+              <div className="flex items-center gap-2 text-slate-200">
+                {teacherProfile?.photoUrl && (
+                  <div className="w-8 h-8 rounded-full overflow-hidden border-2 border-emerald-400 shrink-0 shadow-xs bg-slate-800">
+                    <img
+                      src={teacherProfile.photoUrl}
+                      alt={teacherProfile.name}
+                      referrerPolicy="no-referrer"
+                      className="w-full h-full object-cover object-top"
+                    />
+                  </div>
+                )}
                 <GraduationCap className="w-4 h-4 text-emerald-400 shrink-0" />
                 <span className="font-semibold text-white">Ulfatul Husna, S.Ag., M.Pd.</span>
                 <span className="text-emerald-400 font-normal">(Pembina Utama Muda / IV.c)</span>
