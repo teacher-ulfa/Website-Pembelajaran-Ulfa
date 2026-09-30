@@ -1,0 +1,6 @@
+{
+  "name": "Ruang Belajar PAI - Portal Pembelajaran & Administrasi Guru",
+  "description": "Portal web pembelajaran Pendidikan Agama Islam modern: administrasi perangkat ajar (RPP/Modul, Silabus, LKPD), galeri dokumentasi KBM, profil pendidik, dan media game edukasi interaktif.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
